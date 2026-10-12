@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#071526" />
+    <meta name="description" content="Learn your keyboard by flying it. A tiny 3D flight mission that turns U D F B L R and S into muscle memory." />
+    <title>TYPECRAFT — Learn the keys. Own the sky.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="app">
+      <canvas id="flight-canvas" aria-label="Three dimensional arcade flight course"></canvas>
+      <div class="grain" aria-hidden="true"></div>
+      <header class="topbar"><a class="wordmark" href="#" aria-label="Typecraft home"><span class="brand-mark">✳</span> TYPE<span class="wordmark-light">CRAFT</span></a><div class="top-note"><i></i> FLIGHT SCHOOL · KEYBOARD OR TOUCH</div><button id="sound-toggle" class="icon-button" aria-label="Toggle sound" title="Toggle sound">◖))</button></header>
+      <main id="screen" class="screen">
+        <section id="home" class="panel home-panel">
+          <div class="eyebrow"><span class="eyebrow-line"></span> YOUR HANDS KNOW THE WAY</div>
+          <h1>Learn the keys.<br/><em>Own the sky.</em></h1>
+          <p class="lede">A short flight. Seven keys. A little more muscle memory every time you take off.</p>
+          <div class="home-bottom"><button id="start-test" class="primary-button">START FLIGHT <span>↗</span></button><div class="key-summary"><span>YOUR FLIGHT DECK</span><div class="mini-keys"><kbd>U</kbd><kbd>D</kbd><kbd>F</kbd><kbd>B</kbd><kbd>L</kbd><kbd>R</kbd><kbd>S</kbd></div></div></div>
+          <div class="home-foot"><span>01 — LOCATE YOUR KEYS</span><span>02 — FLY THE COURSE</span><span>03 — SEE WHAT STUCK</span></div>
+        </section>
+        <section id="test" class="panel test-panel hidden">
+          <div class="eyebrow"><span class="eyebrow-line"></span><span id="test-phase-label">FLIGHT CHECK · BEFORE</span></div>
+          <div class="test-grid"><div><h2 id="test-title">Find your<br/><em>flight keys.</em></h2><p class="muted">No hints this time. Press the key shown below on your keyboard — as quickly as you can. No keyboard? Tap the big letter.</p><div class="test-progress"><span id="test-count">01 / 07</span><div class="progress-track"><div id="test-progress-fill"></div></div></div></div><div class="test-prompt"><div class="test-prompt-label">LOCATE THIS KEY</div><button type="button" id="test-letter" class="test-letter" aria-label="Tap to answer U, climb">U</button><div id="test-action" class="test-action">CLIMB</div><div id="test-feedback" class="test-feedback">Get ready</div></div></div>
+          <div id="test-results" class="test-results hidden"></div>
+        </section>
+        <section id="game" class="game-ui hidden">
+          <div class="mission-card"><div class="mission-kicker"><span class="live-dot"></span><span id="stage-label">STAGE 01 · GETTING AIRBORNE</span><span id="stage-progress" class="stage-progress">01 / 28</span></div><div id="mission-title" class="mission-title">Climb through the sunrise gate</div><div id="mission-subtitle" class="mission-subtitle">Find U to lift your wings</div><div class="steps" aria-label="Flight controls"><div id="step-key" class="step active"><b>1</b><span>Hold <kbd id="step-key-cap" class="cue-key">U</kbd> <span id="step-key-text">to fly toward the ring</span></span></div><div id="step-fly" class="step"><b>2</b><span>U/D up/down · L/R left/right · F/B forward/back · S shoot</span></div></div><div class="mission-meter"><div id="mission-meter-fill"></div></div></div>
+          <div class="flight-readout"><div><span class="readout-label">ALT</span><strong id="altitude-readout">1,240</strong><small>FT</small></div><div><span class="readout-label">SCORE</span><strong id="score-readout">000</strong></div></div>
+          <div class="steer-card" role="group" aria-label="Steering controls"><div class="steer-title">HOLD U/D · L/R · F/B TO FLY</div><div class="steer-goal">GOAL · GREEN DOT INSIDE THE RING — IT WAITS FOR YOU</div><div class="steer-pad"><button id="steer-up" class="steer-btn" data-steer="U" aria-label="Fly up (U)">U</button><button id="steer-left" class="steer-btn" data-steer="L" aria-label="Fly left (L)">L</button><button id="steer-down" class="steer-btn" data-steer="D" aria-label="Fly down (D)">D</button><button id="steer-right" class="steer-btn" data-steer="R" aria-label="Fly right (R)">R</button><button id="steer-forward" class="steer-btn" data-steer="F" aria-label="Fly forward (F)">F</button><button id="steer-back" class="steer-btn" data-steer="B" aria-label="Fly backward (B)">B</button></div><div id="line-status" class="line-status">LINE UP WITH THE RING</div></div>
+          <div id="toast" class="toast" role="status" aria-live="polite"></div>
+          <div class="game-bottom"><div class="keyboard-card"><div class="keyboard-caption"><span>YOUR FLIGHT DECK</span><button id="help-toggle" class="help-toggle" aria-pressed="false">HINTS ON <span>⌄</span></button></div><div id="keyboard" class="keyboard" role="group" aria-label="On-screen QWERTY keyboard with flight keys U D F B L R S. Hold a flight key to move, or press S to shoot."><div class="key-row row-1"><button type="button" class="key-btn" data-key="Q">Q</button><button type="button" class="key-btn" data-key="W">W</button><button type="button" class="key-btn" data-key="E">E</button><button type="button" class="key-btn" data-key="R">R</button><button type="button" class="key-btn" data-key="T">T</button><button type="button" class="key-btn" data-key="Y">Y</button><button type="button" class="key-btn" data-key="U">U</button><button type="button" class="key-btn" data-key="I">I</button><button type="button" class="key-btn" data-key="O">O</button><button type="button" class="key-btn" data-key="P">P</button></div><div class="key-row row-2"><button type="button" class="key-btn" data-key="A">A</button><button type="button" class="key-btn" data-key="S">S</button><button type="button" class="key-btn" data-key="D">D</button><button type="button" class="key-btn" data-key="F">F</button><button type="button" class="key-btn" data-key="G">G</button><button type="button" class="key-btn" data-key="H">H</button><button type="button" class="key-btn" data-key="J">J</button><button type="button" class="key-btn" data-key="K">K</button><button type="button" class="key-btn" data-key="L">L</button></div><div class="key-row row-3"><button type="button" class="key-btn" data-key="Z">Z</button><button type="button" class="key-btn" data-key="X">X</button><button type="button" class="key-btn" data-key="C">C</button><button type="button" class="key-btn" data-key="V">V</button><button type="button" class="key-btn" data-key="B">B</button><button type="button" class="key-btn" data-key="N">N</button><button type="button" class="key-btn" data-key="M">M</button></div><div class="keyboard-legend">REAL QWERTY LAYOUT <span>✦</span> HOLD TO FLY · NO REMAPPING</div></div></div><div class="flight-tip"><span class="tip-icon">✳</span><span>Hold U/D to climb or descend, L/R to move left or right, and F/B to fly forward or back. The green dot shows alignment; the ring waits for you. Press S to shoot.<br/>Stuck? <button id="skip-mission" class="skip-button" title="Skip this prompt">SKIP ↗</button></span></div></div>
+        </section>
+        <section id="results" class="panel results-panel hidden"><div class="eyebrow"><span class="eyebrow-line"></span> FLIGHT DEBRIEF · MISSION COMPLETE</div><h2>That felt<br/><em>different.</em></h2><p class="muted">Same keys. One flight apart. Here’s what changed.</p><div id="comparison" class="comparison"></div><label class="again-question">Would you fly this again as typing practice?<select id="replay-answer"><option value="">Choose one…</option><option>Absolutely</option><option>Maybe</option><option>Probably not</option></select></label><div class="results-actions"><button id="replay" class="primary-button">FLY AGAIN <span>↗</span></button><button id="back-home" class="secondary-button">BACK TO BASE</button></div><p class="privacy-note">YOUR FLIGHT LOG STAYS ON THIS DEVICE.</p></section>
+      </main>
+      <footer class="ambient-footer"><span>ALTITUDE FOR ATTITUDE</span><span id="footer-location">SOMEWHERE OVER NOWHERE</span><span>NO AUTOPILOT FOR YOUR FINGERS ✳</span></footer>
+      <div id="live-announcement" class="sr-only" aria-live="polite"></div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
